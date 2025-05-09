@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Bağlantı</title>
+    <style>
+        .btn {
+            padding: 15px 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showAndRedirect()" class="btn">WiFi'ya Bağlan</button>
+    <div id="wifiInfo" class="info">
+        <p>Ağ Adı: BigPass</p>
+        <p>Şifre: password</p>
+    </div>
+
+    <script>
+        function showAndRedirect() {
+            document.getElementById('wifiInfo').style.display = 'block';
+            
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = 'App-Prefs:root=WIFI';
+            } else if (/Android/i.test(navigator.userAgent)) {
+                window.location.href = 'intent://settings/wifi#Intent;scheme=android-settings;end';
+            }
+        }
+    </script>
+</body>
+</html>
